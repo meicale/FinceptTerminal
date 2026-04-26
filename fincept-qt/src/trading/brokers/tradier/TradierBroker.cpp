@@ -569,7 +569,7 @@ ApiResponse<QVector<BrokerCandle>> TradierBroker::get_history(const BrokerCreden
             // date is "YYYY-MM-DD" string — convert to epoch ms
             QDate d = QDate::fromString(o.value("date").toString(), "yyyy-MM-dd");
             c.timestamp = d.isValid()
-                              ? static_cast<int64_t>(QDateTime(d, QTime(0, 0, 0), QTimeZone::UTC).toSecsSinceEpoch()) * 1000LL
+                              ? static_cast<int64_t>(QDateTime(d, QTime(0, 0, 0), QTimeZone::utc()).toSecsSinceEpoch()) * 1000LL
                               : 0LL;
             c.open = o.value("open").toDouble();
             c.high = o.value("high").toDouble();

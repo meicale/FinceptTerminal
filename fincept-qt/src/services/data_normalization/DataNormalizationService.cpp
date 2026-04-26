@@ -268,12 +268,15 @@ QJsonValue DataNormalizationService::apply_transform(const QJsonValue& val, cons
 
     if (transform == "unix_ms_to_iso") {
         qint64 ms = val.isDouble() ? static_cast<qint64>(val.toDouble()) : val.toString().toLongLong();
-        return QJsonValue(QDateTime::fromMSecsSinceEpoch(ms, QTimeZone::UTC).toString(Qt::ISODate));
+        return QJsonValue(QDateTime::fromMSecsSinceEpoch(ms, QTimeZone::utc()).toString(Qt::ISODate));
+                // return QJsonValue(QDateTime::fromMSecsSinceEpoch(ms, QTimeZone::utc()).toString(Qt::ISODate));
+
     }
 
     if (transform == "unix_s_to_iso") {
         qint64 s = val.isDouble() ? static_cast<qint64>(val.toDouble()) : val.toString().toLongLong();
-        return QJsonValue(QDateTime::fromSecsSinceEpoch(s, QTimeZone::UTC).toString(Qt::ISODate));
+        return QJsonValue(QDateTime::fromSecsSinceEpoch(s, QTimeZone::utc()).toString(Qt::ISODate));
+                // return QJsonValue(QDateTime::fromSecsSinceEpoch(s, QTimeZone::utc()).toString(Qt::ISODate));
     }
 
     if (transform == "upper") {

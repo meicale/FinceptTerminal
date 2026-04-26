@@ -570,7 +570,7 @@ ApiResponse<QVector<BrokerCandle>> SaxoBankBroker::get_history(const BrokerCrede
     }
     count = qMax(1, qMin(count, 1200)); // Saxo max is typically 1200
 
-    QString time_str = QDateTime(to, QTime(23, 59, 59), QTimeZone::UTC).toString(Qt::ISODate);
+    QString time_str = QDateTime(to, QTime(23, 59, 59), QTimeZone::utc()).toString(Qt::ISODate);
 
     QString url = QString("%1/chart/v1/charts?Uic=%2&AssetType=Stock&Horizon=%3&Count=%4"
                           "&Mode=UpTo&Time=%5")

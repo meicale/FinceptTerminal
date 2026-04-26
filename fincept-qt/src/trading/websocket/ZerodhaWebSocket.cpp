@@ -274,7 +274,7 @@ ZerodhaTick ZerodhaWebSocket::parse_full_packet(const uchar* p) const {
     t.oi_day_low = read_i32(p + 56);
 
     qint32 ex_ts = read_i32(p + 60);
-    t.exchange_timestamp = QDateTime::fromSecsSinceEpoch(ex_ts, QTimeZone::UTC);
+    t.exchange_timestamp = QDateTime::fromSecsSinceEpoch(ex_ts, QTimeZone::utc());
 
     // Depth: 5 bids then 5 asks, each 12 bytes
     for (int i = 0; i < 5; ++i) {

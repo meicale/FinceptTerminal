@@ -322,7 +322,7 @@ qint64 PortfolioPerfChart::iso_date_to_ms_utc(const QString& iso_date) {
     const QDate d = QDate::fromString(iso_date.left(10), Qt::ISODate);
     if (!d.isValid())
         return QDateTime::currentMSecsSinceEpoch();
-    return QDateTime(d, QTime(0, 0), QTimeZone::UTC).toMSecsSinceEpoch();
+    return QDateTime(d, QTime(0, 0), QTimeZone::utc()).toMSecsSinceEpoch();
 }
 
 void PortfolioPerfChart::update_period_buttons_enabled() {
@@ -534,9 +534,9 @@ void PortfolioPerfChart::update_chart() {
                                 QString("  |  %1: loading…").arg(benchmark_symbol_));
         } else {
             const QDate start_date = QDateTime::fromMSecsSinceEpoch(
-                static_cast<qint64>(nav_line->at(0).x()), QTimeZone::UTC).date();
+                static_cast<qint64>(nav_line->at(0).x()), QTimeZone::utc()).date();
             const QDate end_date = QDateTime::fromMSecsSinceEpoch(
-                static_cast<qint64>(nav_line->at(nav_line->count() - 1).x()), QTimeZone::UTC).date();
+                static_cast<qint64>(nav_line->at(nav_line->count() - 1).x()), QTimeZone::utc()).date();
 
             // First benchmark close on/after period start = base for normalisation.
             double bench_base = 0.0;

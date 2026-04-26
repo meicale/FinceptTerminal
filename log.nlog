@@ -1,0 +1,5 @@
+在wsl2 中配置和手动安装
+1.  安装qt6： 'sudo apt install qt6-base-dev qt6-charts-dev qt6-tools-dev qt6-base-private-dev libqt6websockets6-dev libgl1-mesa-dev qt6-multimedia-dev'
+2.  安装openssh 'sudo apt-get install openssl libssl-dev'
+3.  将 QTimeZone::UTC 替换为 QTimeZone::utc() 
+4.  配置安装路径的命令行选线： '/usr/bin/cmake -DCMAKE_PREFIX_PATH=/usr -DFINCEPT_ALLOW_QT_DRIFT=ON --preset linux-release'
